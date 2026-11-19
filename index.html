@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nashville Tonight — where to go, by music and by night</title>
+<meta name="description" content="You're already downtown. Here's where to actually go — real country, bluegrass, roots and rock, by night and by the kind of crowd you want. A hand-curated Nashville directory.">
+<meta name="theme-color" content="#141110">
+<style>
+  :root{
+    --ink:#141110; --ink-2:#1d1917; --card:#221d1a; --line:#332b26;
+    --cream:#f6efe4; --muted:#a4968a; --gold:#e0a83c; --gold-dim:#8a6a2a;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:var(--ink);color:var(--cream);font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:900px;margin:0 auto;padding:0 18px 70px}
+  header{padding:34px 0 18px;border-bottom:1px solid var(--line)}
+  .brand{font-family:Georgia,"Times New Roman",serif;font-size:15px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+  h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(30px,7vw,44px);line-height:1.08;margin:12px 0 8px;letter-spacing:-.01em}
+  h1 em{font-style:italic;color:var(--gold)}
+  .sub{color:var(--muted);font-size:15px;max-width:560px}
+  .meta{margin-top:12px;font-size:12px;color:#7d7168;letter-spacing:.04em}
+
+  .filters{margin:22px 0 8px;display:grid;gap:14px}
+  .fgroup label{display:block;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+  .chips{display:flex;flex-wrap:wrap;gap:7px}
+  .chip{border:1px solid var(--line);background:var(--ink-2);color:var(--cream);border-radius:999px;padding:7px 13px;font-size:13px;cursor:pointer;transition:.15s}
+  .chip:hover{border-color:var(--gold-dim)}
+  .chip[aria-pressed="true"]{background:var(--gold);color:#1a1512;border-color:var(--gold);font-weight:600}
+  .toggle{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--cream);cursor:pointer;padding:6px 0}
+  .toggle input{width:18px;height:18px;accent-color:var(--gold)}
+
+  .count{font-size:13px;color:var(--muted);margin:18px 0 10px}
+  .list{display:grid;gap:12px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 17px}
+  .card h2{font-family:Georgia,serif;font-weight:400;font-size:21px;margin:0 0 3px}
+  .card .area{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+  .card p{font-size:14px;color:#d9cfc2;margin:8px 0 0}
+  .card .note{font-size:12.5px;color:var(--muted);font-style:italic;margin-top:6px}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+  .tag{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:3px 9px;color:var(--muted)}
+  .tag.hot{border-color:var(--gold-dim);color:var(--gold)}
+  .facts{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;font-size:12.5px;color:var(--muted)}
+  .facts b{color:var(--cream);font-weight:500}
+  .empty{text-align:center;color:var(--muted);padding:36px 10px;border:1px dashed var(--line);border-radius:12px}
+  footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);font-size:12.5px;color:#7d7168;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+  footer a{color:var(--gold);text-decoration:none}
+  .report{background:none;border:0;color:var(--gold);font-size:12px;padding:0;cursor:pointer;text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="brand">Nashville Tonight</div>
+  <h1>You're already downtown.<br><em>Here's where to actually go.</em></h1>
+  <p class="sub">Pick the night, pick what you want to hear. Every room on this list is hand-picked and
+  described honestly — including the ones that are a party bar, so you don't walk into one by accident.</p>
+  <div class="meta" id="meta">Loading the list…</div>
+</header>
+
+<div class="filters">
+  <div class="fgroup">
+    <label>Night</label>
+    <div class="chips" id="nightChips"></div>
+  </div>
+  <div class="fgroup">
+    <label>What you want to hear</label>
+    <div class="chips" id="musicChips"></div>
+  </div>
+  <div class="fgroup">
+    <label>The kind of night</label>
+    <div class="chips" id="vibeChips"></div>
+  </div>
+  <label class="toggle"><input type="checkbox" id="skipParty"> Skip the party bars — I want to hear the band</label>
+</div>
+
+<div class="count" id="count"></div>
+<div class="list" id="list"></div>
+
+<footer>
+  <div>Built and kept by <a href="https://as-ulikeit.com" target="_blank" rel="noopener">AS·U·LIKE·IT Entertainment</a> — Nashville.</div>
+  <div>Something wrong or closed? <button class="report" id="report">Tell us</button></div>
+</footer>
+
+</div>
+
+<script>
+const DAYS = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+const MUSIC = ['traditional country','classic country','country covers','party country','bluegrass','roots','songwriters','rock','dance'];
+const MUSIC_LABEL = {
+  'traditional country':'Traditional country','classic country':'Classic country','country covers':'Country covers',
+  'party country':'Party country','bluegrass':'Bluegrass','roots':'Roots / Americana','songwriters':'Songwriters',
+  'rock':'Rock','dance':'Dance / two-step'
+};
+const VIBES = ['listening','honky tonk','dance hall','dive','bar','party'];
+const VIBE_LABEL = {listening:'Sit and listen', 'honky tonk':'Honky tonk', 'dance hall':'Dance hall', dive:'Dive', bar:'Neighborhood bar', party:'Party bar'};
+
+const state = { night:null, music:null, vibe:null, skipParty:false };
+let VENUES = [];
+
+function chip(text, pressed, onClick){
+  const b = document.createElement('button');
+  b.className='chip'; b.type='button'; b.textContent=text;
+  b.setAttribute('aria-pressed', pressed ? 'true':'false');
+  b.addEventListener('click', onClick);
+  return b;
+}
+
+function buildChips(){
+  const n = document.getElementById('nightChips'); n.innerHTML='';
+  n.appendChild(chip('Any night', !state.night, ()=>{ state.night=null; render(); }));
+  DAYS.forEach(d=> n.appendChild(chip(d, state.night===d, ()=>{ state.night = state.night===d?null:d; render(); })));
+
+  const m = document.getElementById('musicChips'); m.innerHTML='';
+  m.appendChild(chip('Anything', !state.music, ()=>{ state.music=null; render(); }));
+  MUSIC.forEach(k=> m.appendChild(chip(MUSIC_LABEL[k], state.music===k, ()=>{ state.music = state.music===k?null:k; render(); })));
+
+  const v = document.getElementById('vibeChips'); v.innerHTML='';
+  v.appendChild(chip('Any vibe', !state.vibe, ()=>{ state.vibe=null; render(); }));
+  VIBES.forEach(k=> v.appendChild(chip(VIBE_LABEL[k], state.vibe===k, ()=>{ state.vibe = state.vibe===k?null:k; render(); })));
+}
+
+function matches(v){
+  if (state.skipParty && (v.vibe==='party' || v.music.includes('party country'))) return false;
+  if (state.vibe && v.vibe!==state.vibe) return false;
+  if (state.music && !v.music.some(m=> m===state.music || m.includes(state.music))) return false;
+  if (state.night){
+    const best = v.best || [];
+    const anyNight = best.includes('any') || best.includes('varies');
+    if (!anyNight && !best.includes(state.night)) return false;
+  }
+  return true;
+}
+
+function card(v){
+  const el = document.createElement('div'); el.className='card';
+  const tags = v.music.slice(0,4).map(m=>`<span class="tag">${MUSIC_LABEL[m]||m}</span>`).join('')
+             + `<span class="tag hot">${VIBE_LABEL[v.vibe]||v.vibe}</span>`;
+  el.innerHTML = `
+    <div class="area">${v.area}</div>
+    <h2>${v.name}</h2>
+    <div class="tags">${tags}</div>
+    <p>${v.why}</p>
+    ${v.note?`<p class="note">${v.note}</p>`:''}
+    <div class="facts">
+      <span><b>Cover:</b> ${v.cover}</span>
+      <span><b>Hours:</b> ${v.hours}</span>
+      <span><b>Crowd:</b> ${v.crowd}</span>
+      ${v.address&&v.address!=='Broadway'?`<span><b>Where:</b> ${v.address}</span>`:''}
+    </div>`;
+  return el;
+}
+
+function render(){
+  buildChips();
+  const list = document.getElementById('list'); list.innerHTML='';
+  const hits = VENUES.filter(matches);
+  document.getElementById('count').textContent =
+    hits.length + (hits.length===1?' place':' places') +
+    (state.night?` worth your ${state.night}`:'') +
+    (state.skipParty?' (party bars hidden)':'');
+  if(!hits.length){
+    const e=document.createElement('div'); e.className='empty';
+    e.innerHTML='Nothing on this list fits that combination — which usually means the honest answer is<br>“pick a different night.” Try removing a filter.';
+    list.appendChild(e); return;
+  }
+  hits.sort((a,b)=> (a.vibe==='party') - (b.vibe==='party'));
+  hits.forEach(v=> list.appendChild(card(v)));
+}
+
+document.getElementById('skipParty').addEventListener('change', e=>{ state.skipParty = e.target.checked; render(); });
+document.getElementById('report').addEventListener('click', ()=>{
+  location.href = 'mailto:djbenthomas@gmail.com?subject=' + encodeURIComponent('Nashville Tonight — correction')
+    + '&body=' + encodeURIComponent('Venue:\nWhat changed:\n');
+});
+
+fetch('data/venues.json').then(r=>r.json()).then(d=>{
+  VENUES = d.venues || [];
+  document.getElementById('meta').textContent = 'Last verified ' + d.updated + ' · ' + VENUES.length + ' rooms · schedules change — check the venue before you go';
+  const today = new Date().getDay(); // 0=Sun
+  state.night = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][today];
+  render();
+  // default to tonight, but make it obvious it's a filter
+  document.querySelectorAll('.fgroup')[0].querySelector('label').textContent = 'Night — set to tonight (' + state.night + ')';
+}).catch(e=>{
+  document.getElementById('meta').textContent='Could not load the list: '+e.message;
+});
+</script>
+</body>
+</html>

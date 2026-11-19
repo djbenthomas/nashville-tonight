@@ -41,6 +41,8 @@
   .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
   .tag{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:3px 9px;color:var(--muted)}
   .tag.hot{border-color:var(--gold-dim);color:var(--gold)}
+  .specials{margin-top:9px;font-size:13px;color:#f0e3cb;background:rgba(224,168,60,.08);border-left:2px solid var(--gold);padding:7px 10px;border-radius:0 6px 6px 0}
+  .specials b{color:var(--gold);font-weight:600}
   .facts{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;font-size:12.5px;color:var(--muted)}
   .facts b{color:var(--cream);font-weight:500}
   .empty{text-align:center;color:var(--muted);padding:36px 10px;border:1px dashed var(--line);border-radius:12px}
@@ -81,7 +83,7 @@
 
 <footer>
   <div>Built and kept by <a href="https://as-ulikeit.com" target="_blank" rel="noopener">AS·U·LIKE·IT Entertainment</a> — Nashville.</div>
-  <div>Something wrong or closed? <button class="report" id="report">Tell us</button></div>
+  <div><a href="partners.html">Venues: get listed or featured →</a> &nbsp;·&nbsp; Something wrong? <button class="report" id="report">Tell us</button></div>
 </footer>
 
 </div>
@@ -142,7 +144,9 @@ function card(v){
     <div class="area">${v.area}</div>
     <h2>${v.name}</h2>
     <div class="tags">${tags}</div>
+    ${v.featured?'<div class="tag hot" style="margin-top:8px">Featured</div>':''}
     <p>${v.why}</p>
+    ${(v.specials && v.specials.length)?`<div class="specials"><b>Specials:</b> ${v.specials.join(' · ')}</div>`:''}
     ${v.note?`<p class="note">${v.note}</p>`:''}
     <div class="facts">
       <span><b>Cover:</b> ${v.cover}</span>
@@ -166,7 +170,7 @@ function render(){
     e.innerHTML='Nothing on this list fits that combination — which usually means the honest answer is<br>“pick a different night.” Try removing a filter.';
     list.appendChild(e); return;
   }
-  hits.sort((a,b)=> (a.vibe==='party') - (b.vibe==='party'));
+  hits.sort((a,b)=> (b.featured?1:0)-(a.featured?1:0) || ((a.vibe==='party')-(b.vibe==='party')));
   hits.forEach(v=> list.appendChild(card(v)));
 }
 

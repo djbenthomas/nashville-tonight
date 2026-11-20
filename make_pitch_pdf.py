@@ -115,7 +115,7 @@ is the audience engine: same voice, same taste, one post a day about who's actua
 whether they pay or not. That's what makes the recommendations worth trusting, and it's the reason a bar
 manager will believe the rest of it.</p>
 
-<div class="quote">"Nashville invented this music. We're just making sure people can find it on a Friday night."</div>
+<div class="quote">"Nashville invented this music. We're just making sure people can find it on a Friday night — or a Tuesday afternoon."</div>
 
 <h2><span class="n">06</span>Where it is right now</h2>
 <div class="cols">

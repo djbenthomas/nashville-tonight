@@ -1,0 +1,183 @@
+{
+  "updated": "2026-11-20",
+  "prototype": true,
+  "note": "PROTOTYPE DATA. Venue names, floors and walking times are real. The acts and set times are placeholders to show the design until each venue confirms its lineup — every card is marked SAMPLE. Never show this to the public as a live lineup.",
+  "center": "5th Ave & Broadway",
+  "venues": [
+    {
+      "name": "Rippy's",
+      "address": "429 Broadway",
+      "walk": 2,
+      "cover": "no cover",
+      "age": "21+",
+      "stages": ["Main Stage", "Rooftop"],
+      "mood": ["classic country", "two-stepping"],
+      "price": "$$",
+      "ageBand": "any",
+      "contactNote": "Lineup contact + text-on-switch: TBD",
+      "acts": [
+        {
+          "act": "Friends with Bennys",
+          "stage": "Rippy's Main Stage",
+          "start": "18:00",
+          "end": "21:00",
+          "cover": "no cover",
+          "age": "21+",
+          "confirmed": true,
+          "benny": true,
+          "sound": "Mostly country, with fiddle, rock, hip-hop and big singalongs.",
+          "remember": "Tell Benny it's your birthday and he might make up a song about you right there.",
+          "clip": ""
+        },
+        {
+          "act": "SAMPLE — house band",
+          "stage": "Rippy's Rooftop",
+          "start": "21:30",
+          "end": "01:30",
+          "cover": "$10 after 9",
+          "age": "21+",
+          "confirmed": false,
+          "benny": false,
+          "sound": "Sample card — loud, current country, big chorus singalongs.",
+          "remember": "Sample card — replace with the act's own sentence.",
+          "clip": ""
+        }
+      ]
+    },
+    {
+      "name": "Honky Tonk Central",
+      "address": "329 Broadway",
+      "walk": 4,
+      "cover": "sometimes",
+      "age": "21+",
+      "stages": ["First floor", "Second floor", "Third floor"],
+      "mood": ["rowdy singalong", "party"],
+      "price": "$$",
+      "ageBand": "21-34",
+      "contactNote": "Lineup contact + text-on-switch: TBD",
+      "acts": [
+        {
+          "act": "SAMPLE — party band",
+          "stage": "Second floor",
+          "start": "20:00",
+          "end": "01:00",
+          "cover": "$10 after 8",
+          "age": "21+",
+          "confirmed": false,
+          "benny": false,
+          "sound": "Sample card — rowdy, dance-floor country with a rock edge.",
+          "remember": "Sample card — one thing people remember about the show.",
+          "clip": ""
+        }
+      ]
+    },
+    {
+      "name": "Robert's Western World",
+      "address": "416B Broadway",
+      "walk": 3,
+      "cover": "no cover",
+      "age": "21+",
+      "stages": ["Stage"],
+      "mood": ["classic country", "honky tonk"],
+      "price": "$",
+      "ageBand": "any",
+      "contactNote": "Lineup contact + text-on-switch: TBD",
+      "acts": [
+        {
+          "act": "SAMPLE — traditional country",
+          "stage": "Stage",
+          "start": "14:00",
+          "end": "18:00",
+          "cover": "no cover",
+          "age": "21+",
+          "confirmed": false,
+          "benny": false,
+          "sound": "Sample card — real traditional country, twin fiddles, no production.",
+          "remember": "Sample card — cheap beer, dancers, no stage show.",
+          "clip": ""
+        }
+      ]
+    },
+    {
+      "name": "Nudie's Honky Tonk",
+      "address": "409 Broadway",
+      "walk": 3,
+      "cover": "sometimes",
+      "age": "21+",
+      "stages": ["Main floor", "Upstairs"],
+      "mood": ["classic country", "rowdy singalong"],
+      "price": "$$",
+      "ageBand": "any",
+      "contactNote": "Lineup contact + text-on-switch: TBD",
+      "acts": [
+        {
+          "act": "SAMPLE — house band",
+          "stage": "Main floor",
+          "start": "19:00",
+          "end": "00:00",
+          "cover": "$10 after 9",
+          "age": "21+",
+          "confirmed": false,
+          "benny": false,
+          "sound": "Sample card — Nudie suits on the wall, country with a barroom punch.",
+          "remember": "Sample card — the room itself is the thing people remember.",
+          "clip": ""
+        }
+      ]
+    },
+    {
+      "name": "Tin Roof",
+      "address": "316 Broadway",
+      "walk": 5,
+      "cover": "sometimes",
+      "age": "21+",
+      "stages": ["Downstairs", "Rooftop"],
+      "mood": ["talking", "party"],
+      "price": "$$",
+      "ageBand": "21-34",
+      "contactNote": "Lineup contact + text-on-switch: TBD",
+      "acts": [
+        {
+          "act": "SAMPLE — acoustic set",
+          "stage": "Rooftop",
+          "start": "18:30",
+          "end": "21:30",
+          "cover": "no cover",
+          "age": "21+",
+          "confirmed": false,
+          "benny": false,
+          "sound": "Sample card — acoustic country you can actually talk over.",
+          "remember": "Sample card — rooftop, sunset, quieter than the street below.",
+          "clip": ""
+        }
+      ]
+    },
+    {
+      "name": "The Stage on Broadway",
+      "address": "412 Broadway",
+      "walk": 3,
+      "cover": "sometimes",
+      "age": "21+",
+      "stages": ["Main stage", "Upstairs"],
+      "mood": ["rowdy singalong", "two-stepping"],
+      "price": "$$",
+      "ageBand": "21-34",
+      "contactNote": "Lineup contact + text-on-switch: TBD",
+      "acts": [
+        {
+          "act": "SAMPLE — full band",
+          "stage": "Main stage",
+          "start": "20:30",
+          "end": "01:30",
+          "cover": "$10 after 8",
+          "age": "21+",
+          "confirmed": false,
+          "benny": false,
+          "sound": "Sample card — big stage, full band, current country.",
+          "remember": "Sample card — the stage is the reason people walk in.",
+          "clip": ""
+        }
+      ]
+    }
+  ]
+}

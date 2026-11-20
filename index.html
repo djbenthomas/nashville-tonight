@@ -2,301 +2,293 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nashville Tonight — where to go, by music and by night</title>
-<meta name="description" content="You're already downtown. Here's where to actually go — real country, bluegrass, roots and rock, by night and by the kind of crowd you want. A hand-curated Nashville directory.">
-<meta name="theme-color" content="#141110">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Honky Tonk Bar Hop — Nashville's Lower Broadway</title>
+<meta name="description" content="Who's playing a short walk away? Honky Tonk Bar Hop shows who's on stage right now on Lower Broadway — by stage, floor, set time, cover, age rules and how far you have to walk.">
 <style>
   :root{
     --ink:#141110; --ink-2:#1d1917; --card:#221d1a; --line:#332b26;
-    --cream:#f6efe4; --muted:#a4968a; --gold:#e0a83c; --gold-dim:#8a6a2a;
+    --cream:#f6efe4; --muted:#a4968a; --gold:#e0a83c; --gold-dim:#8a6a2a; --live:#7dc47a;
   }
   *{box-sizing:border-box}
-  html,body{margin:0;padding:0}
-  body{background:var(--ink);color:var(--cream);font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:900px;margin:0 auto;padding:0 18px 70px}
+  body{margin:0;background:var(--ink);color:var(--cream);font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px 60px}
   header{padding:34px 0 18px;border-bottom:1px solid var(--line)}
-  .brand{font-family:Georgia,"Times New Roman",serif;font-size:15px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
-  h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(30px,7vw,44px);line-height:1.08;margin:12px 0 8px;letter-spacing:-.01em}
+  .brand{font-family:Georgia,"Times New Roman",serif;font-size:13px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+  h1{font-family:Georgia,serif;font-weight:400;font-size:38px;line-height:1.05;margin:10px 0 6px;letter-spacing:.02em}
   h1 em{font-style:italic;color:var(--gold)}
-  .sub{color:var(--muted);font-size:15px;max-width:560px}
-  .meta{margin-top:12px;font-size:12px;color:#7d7168;letter-spacing:.04em}
-
-  .filters{margin:22px 0 8px;display:grid;gap:14px}
+  .tag{font-size:16px;color:var(--cream);margin:0 0 4px}
+  .where{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+  .proto{margin:16px 0 0;padding:9px 12px;border:1px solid var(--gold-dim);background:#241d13;border-radius:8px;font-size:12.5px;color:#e8d8b6}
+  .filters{margin:22px 0 10px;display:grid;gap:14px}
   .fgroup label{display:block;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
-  .chips{display:flex;flex-wrap:wrap;gap:7px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
   .chip{border:1px solid var(--line);background:var(--ink-2);color:var(--cream);border-radius:999px;padding:7px 13px;font-size:13px;cursor:pointer;transition:.15s}
   .chip:hover{border-color:var(--gold-dim)}
   .chip[aria-pressed="true"]{background:var(--gold);color:#1a1512;border-color:var(--gold);font-weight:600}
-  .toggle{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--cream);cursor:pointer;padding:6px 0}
-  .toggle input{width:18px;height:18px;accent-color:var(--gold)}
-
-  .count{font-size:13px;color:var(--muted);margin:18px 0 10px}
-  .list{display:grid;gap:12px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 17px}
-  .card h2{font-family:Georgia,serif;font-weight:400;font-size:21px;margin:0 0 3px}
-  .card .area{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
-  .card p{font-size:14px;color:#d9cfc2;margin:8px 0 0}
-  .card .note{font-size:12.5px;color:var(--muted);font-style:italic;margin-top:6px}
-  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
-  .tag{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:3px 9px;color:var(--muted)}
-  .tag.hot{border-color:var(--gold-dim);color:var(--gold)}
-  .specials{margin-top:9px;font-size:13px;color:#f0e3cb;background:rgba(224,168,60,.08);border-left:2px solid var(--gold);padding:7px 10px;border-radius:0 6px 6px 0}
-  .specials b{color:var(--gold);font-weight:600}
-  .facts{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;font-size:12.5px;color:var(--muted)}
-  .facts b{color:var(--cream);font-weight:500}
-  .empty{text-align:center;color:var(--muted);padding:36px 10px;border:1px dashed var(--line);border-radius:12px}
-  footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);font-size:12.5px;color:#7d7168;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
-  footer a{color:var(--gold);text-decoration:none}
-  .report{background:none;border:0;color:var(--gold);font-size:12px;padding:0;cursor:pointer;text-decoration:underline}
+  .count{font-size:13px;color:var(--muted);margin:16px 0 12px}
+  .count b{color:var(--cream)}
+  .live{color:var(--live);font-weight:600}
+  .card{border:1px solid var(--line);background:var(--card);border-radius:14px;padding:18px 18px 16px;margin-bottom:14px;position:relative}
+  .card.feat{border-color:var(--gold);box-shadow:0 0 0 1px rgba(224,168,60,.25) inset}
+  .badge{display:inline-block;font-size:10px;letter-spacing:.18em;text-transform:uppercase;background:var(--gold);color:#1a1512;border-radius:5px;padding:3px 7px;font-weight:700;margin-bottom:8px}
+  .badge.live{background:var(--live);color:#0f1a0f}
+  .badge.sample{background:transparent;border:1px solid var(--line);color:var(--muted);font-weight:600}
+  .act{font-family:Georgia,serif;font-size:25px;line-height:1.15;margin:0 0 4px}
+  .room{font-size:14px;color:var(--gold);margin:0 0 10px}
+  .sound{font-size:15px;margin:0 0 8px;color:var(--cream)}
+  .remember{font-size:13.5px;color:var(--muted);margin:0 0 12px;font-style:italic}
+  .facts{display:flex;flex-wrap:wrap;gap:10px 18px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:11px}
+  .facts b{color:var(--cream);font-weight:600}
+  .empty{border:1px dashed var(--line);border-radius:12px;padding:22px;color:var(--muted);font-size:14px}
+  .empty h3{font-family:Georgia,serif;color:var(--cream);font-weight:400;margin:0 0 8px;font-size:18px}
+  .fallback{border:1px solid var(--gold-dim);background:#241d13;border-radius:12px;padding:16px 18px;margin:14px 0;font-size:14px;color:#eddfc4}
+  .fallback b{color:#fff}
   .tip{margin:34px 0 10px;padding:20px;border:1px solid var(--line);background:var(--card);border-radius:12px}
   .tip h2{font-family:Georgia,serif;font-weight:400;font-size:19px;margin:0 0 6px}
   .tip p{color:var(--muted);font-size:14px;margin:0 0 14px;max-width:640px}
   .tip label{display:block;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:10px 0 5px}
-  .tip input,.tip textarea{width:100%;box-sizing:border-box;background:var(--ink);border:1px solid var(--line);color:var(--cream);
-    border-radius:8px;padding:9px 11px;font-size:14px;font-family:inherit}
+  .tip input,.tip textarea{width:100%;background:var(--ink);border:1px solid var(--line);color:var(--cream);border-radius:8px;padding:9px 11px;font-size:14px;font-family:inherit}
   .tip textarea{min-height:64px;resize:vertical}
-  .tip button{margin-top:14px;background:var(--gold);color:#1a1512;border:0;border-radius:999px;padding:10px 20px;
-    font-size:13px;font-weight:600;cursor:pointer}
+  .tip button{margin-top:14px;background:var(--gold);color:#1a1512;border:0;border-radius:999px;padding:10px 20px;font-size:13px;font-weight:600;cursor:pointer}
   .tip .fine{font-size:12px;color:var(--muted);margin-top:10px}
+  footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+  footer a{color:var(--gold);text-decoration:none}
+  .report{background:none;border:0;color:var(--gold);font-size:12.5px;padding:0;cursor:pointer;text-decoration:underline}
+  @media(max-width:520px){h1{font-size:30px}.act{font-size:22px}}
 </style>
 </head>
 <body>
 <div class="wrap">
 
 <header>
-  <div class="brand">Nashville Tonight</div>
-  <h1>You're already downtown.<br><em>Here's where to actually go.</em></h1>
-  <p class="sub">Pick the night, pick what you want to hear. Every room on this list is hand-picked and
-  described honestly — including the ones that are a party bar, so you don't walk into one by accident.</p>
-  <div class="meta" id="meta">Loading the list…</div>
+  <div class="brand">Nashville's Lower Broadway</div>
+  <h1>Honky Tonk<br><em>Bar Hop</em></h1>
+  <p class="tag">Your interactive guide to how you wanna have fun.</p>
+  <p class="where">Who's playing a short walk away? Scan to find out.</p>
+  <div class="proto"><b>Prototype.</b> Venues, floors and walking times are real. The acts marked SAMPLE are placeholders
+  until each room confirms its lineup — nothing here should be treated as tonight's actual schedule yet.</div>
 </header>
 
 <div class="filters">
   <div class="fgroup">
-    <label>Night</label>
-    <div class="chips" id="nightChips"></div>
-  </div>
-  <div class="fgroup">
-    <label>What you want to hear</label>
-    <div class="chips" id="musicChips"></div>
-  </div>
-  <div class="fgroup">
-    <label>The kind of night</label>
-    <div class="chips" id="vibeChips"></div>
-  </div>
-  <div class="fgroup">
-    <label>Who's asking</label>
-    <div class="chips" id="whoChips"></div>
+    <label>What you're in the mood for</label>
+    <div class="chips" id="moodChips"></div>
   </div>
   <div class="fgroup">
     <label>Age range</label>
     <div class="chips" id="ageChips"></div>
   </div>
   <div class="fgroup">
-    <label>What you're looking for</label>
-    <div class="chips" id="lookChips"></div>
-  </div>
-  <div class="fgroup">
-    <label>Drink prices &amp; cover <span style="font-weight:400;opacity:.65">(estimated from the cover)</span></label>
+    <label>What you want to spend</label>
     <div class="chips" id="priceChips"></div>
   </div>
-  <label class="toggle"><input type="checkbox" id="skipParty"> Skip the party bars — I want to hear the band</label>
+  <div class="fgroup">
+    <label>How far you'll walk</label>
+    <div class="chips" id="walkChips"></div>
+  </div>
 </div>
 
-<div class="count" id="count"></div>
+<div class="count" id="count">Loading the street…</div>
 <div class="list" id="list"></div>
 
 <section class="tip" id="tip">
   <h2>Pop-up show? Somebody famous in town?</h2>
-  <p>If you hear about something tonight that isn't on this list — a pop-up set, a name you didn't expect,
-  a room that changed its lineup last minute — send it over. We check with the venue and post it the same day.
-  You don't need an account.</p>
+  <p>If you hear about something that isn't on this list — a pop-up set, a name you didn't expect, a band
+  switch at the last minute — send it. We check with the room and post it the same day. No account needed.</p>
   <form id="tipForm" novalidate>
     <label for="tipWhat">What's happening</label>
-    <textarea id="tipWhat" placeholder="Pop-up set at 10 — a couple of the guys from..."></textarea>
+    <textarea id="tipWhat" placeholder="Pop-up set at 10 — a couple of the guys from…"></textarea>
     <label for="tipWhere">Where</label>
-    <input id="tipWhere" placeholder="Room or street address">
+    <input id="tipWhere" placeholder="Room, floor or address">
     <label for="tipWhen">When</label>
-    <input id="tipWhen" placeholder="Tonight, 10pm — or Tue afternoon">
+    <input id="tipWhen" placeholder="Right now, 10pm — or Tue afternoon">
     <label for="tipWho">Your name (optional)</label>
     <input id="tipWho" placeholder="So we can credit you">
     <button type="submit">Send the tip</button>
-    <div class="fine">Goes straight to a person, not a form robot. If it's a real pop-up we'll have it up within the hour.</div>
+    <div class="fine">Goes to a person, not a form robot. If it's real we'll have it up within the hour.</div>
   </form>
 </section>
 
 <footer>
   <div>Built and kept by <a href="https://as-ulikeit.com" target="_blank" rel="noopener">AS·U·LIKE·IT Entertainment</a> — Nashville.</div>
-  <div><a href="partners.html">Venues: get listed or featured →</a> &nbsp;·&nbsp; Something wrong? <button class="report" id="report">Tell us</button></div>
+  <div><a href="partners.html">Venues &amp; sponsors →</a> &nbsp;·&nbsp; Something wrong? <button class="report" id="report">Tell us</button></div>
 </footer>
 
 </div>
 
 <script>
-const DAYS = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
-const MUSIC = ['traditional country','classic country','country covers','party country','bluegrass','roots','songwriters','rock','dance'];
-const MUSIC_LABEL = {
-  'traditional country':'Traditional country','classic country':'Classic country','country covers':'Country covers',
-  'party country':'Party country','bluegrass':'Bluegrass','roots':'Roots / Americana','songwriters':'Songwriters',
-  'rock':'Rock','dance':'Dance / two-step'
+const MOODS = {
+  'two-step':      'Two-stepping',
+  'classic':       'Classic country',
+  'rowdy':         'Rowdy singalong',
+  'talk':          'Somewhere I can talk'
 };
-const VIBES = ['listening','honky tonk','dance hall','dive','bar','party'];
-const VIBE_LABEL = {listening:'Sit and listen', 'honky tonk':'Honky tonk', 'dance hall':'Dance hall', dive:'Dive', bar:'Neighborhood bar', party:'Party bar'};
+const AGES  = {'any':'Any age', '21-34':'21–34', '35+':'35 and up'};
+const PRICES = {'$':'$ — cheap night', '$$':'$$ — normal Broadway', '$$$':'$$$ — cover and cocktails'};
+const WALKS = {3:'Under 3 min', 5:'Under 5 min', 10:'I\'ll walk 10'};
 
-const state = { night:null, music:null, vibe:null, who:null, age:null, look:null, price:null, skipParty:false };
+const state = { mood:null, age:null, price:null, walk:null };
+let DATA = [], VENUES = [];
 
-// Derived, not invented: age band and price band come from the room's own written description.
-const AGE_LABEL = {'21-34':'21–34', '35+':'35 and up', any:'Any age'};
-const LOOK_LABEL = {dance:'Dance floor', band:'Live band, front and center', scene:'Cocktails and a scene', group:'Big group / bachelorette', quiet:'Somewhere I can talk'};
-const PRICE_LABEL = {'$':'$ — no cover, cheap drinks', '$$':'$$ — small cover', '$$$':'$$$ — cover or ticketed'};
-
-function ageBand(v){
-  const c = (v.crowd||'').toLowerCase();
-  if (c.includes('older')) return '35+';
-  if (c.includes('bachelorette') || c.includes('tourist') || c.includes('party')) return '21-34';
-  return 'any';
-}
-function priceBand(v){
-  const c = (v.cover||'').toLowerCase();
-  if (c.includes('no cover')) return '$';
-  if (c.includes('ticket') || c.includes('reservation') || c==='cover' || c.includes('most nights')) return '$$$';
-  return '$$';
-}
-function looksLike(v, want){
-  const c = (v.crowd||'').toLowerCase(), m = (v.music||[]).join(' ').toLowerCase();
-  if (want==='dance') return v.vibe==='dance hall' || v.vibe==='party';
-  if (want==='band')  return v.vibe==='listening' || v.vibe==='honky tonk';
-  if (want==='scene') return v.vibe==='party' && (c.includes('tourist') || c.includes('party'));
-  if (want==='group') return v.vibe==='party' || c.includes('bachelorette') || c.includes('tourist');
-  if (want==='quiet') return v.vibe==='listening' || v.vibe==='dive';
-  return true;
-}
-let VENUES = [];
-
-function chip(text, pressed, onClick){
+const chip = (text, on, fn) => {
   const b = document.createElement('button');
-  b.className='chip'; b.type='button'; b.textContent=text;
-  b.setAttribute('aria-pressed', pressed ? 'true':'false');
-  b.addEventListener('click', onClick);
+  b.className = 'chip'; b.type = 'button'; b.textContent = text;
+  b.setAttribute('aria-pressed', on ? 'true' : 'false');
+  b.addEventListener('click', fn);
   return b;
-}
+};
 
 function buildChips(){
-  const n = document.getElementById('nightChips'); n.innerHTML='';
-  n.appendChild(chip('Any night', !state.night, ()=>{ state.night=null; render(); }));
-  DAYS.forEach(d=> n.appendChild(chip(d, state.night===d, ()=>{ state.night = state.night===d?null:d; render(); })));
-
-  const m = document.getElementById('musicChips'); m.innerHTML='';
-  m.appendChild(chip('Anything', !state.music, ()=>{ state.music=null; render(); }));
-  MUSIC.forEach(k=> m.appendChild(chip(MUSIC_LABEL[k], state.music===k, ()=>{ state.music = state.music===k?null:k; render(); })));
-
-  const v = document.getElementById('vibeChips'); v.innerHTML='';
-  v.appendChild(chip('Any vibe', !state.vibe, ()=>{ state.vibe=null; render(); }));
-  VIBES.forEach(k=> v.appendChild(chip(VIBE_LABEL[k], state.vibe===k, ()=>{ state.vibe = state.vibe===k?null:k; render(); })));
-
-  const w = document.getElementById('whoChips'); w.innerHTML='';
-  w.appendChild(chip('Here for the music', !state.who, ()=>{ state.who = state.who==='music'?null:'music'; state.skipParty = state.who==='music'; document.getElementById('skipParty').checked = state.skipParty; render(); }));
-  w.appendChild(chip('Bachelorette / party night', state.who==='party', ()=>{ state.who = state.who==='party'?null:'party'; state.skipParty = false; document.getElementById('skipParty').checked = false; render(); }));
-
-  const a = document.getElementById('ageChips'); a.innerHTML='';
-  a.appendChild(chip('Any age', !state.age, ()=>{ state.age=null; render(); }));
-  ['21-34','35+','any'].forEach(k=> a.appendChild(chip(AGE_LABEL[k], state.age===k, ()=>{ state.age = state.age===k?null:k; render(); })));
-
-  const l = document.getElementById('lookChips'); l.innerHTML='';
-  l.appendChild(chip('Anything', !state.look, ()=>{ state.look=null; render(); }));
-  ['dance','band','scene','group','quiet'].forEach(k=> l.appendChild(chip(LOOK_LABEL[k], state.look===k, ()=>{ state.look = state.look===k?null:k; render(); })));
-
-  const p = document.getElementById('priceChips'); p.innerHTML='';
-  p.appendChild(chip('Any price', !state.price, ()=>{ state.price=null; render(); }));
-  ['$','$$','$$$'].forEach(k=> p.appendChild(chip(PRICE_LABEL[k], state.price===k, ()=>{ state.price = state.price===k?null:k; render(); })));
+  const mk = (id, entries, key) => {
+    const box = document.getElementById(id); box.innerHTML = '';
+    Object.entries(entries).forEach(([val, label]) => {
+      const isAny = val === 'any' && key !== 'age';
+      box.appendChild(chip(label, isAny ? !state[key] : state[key] === val, () => {
+        state[key] = (state[key] === val) ? null : val;
+        render();
+      }));
+    });
+    if (key === 'age') {
+      box.insertBefore(chip('Any age', !state.age, () => { state.age = null; render(); }), box.firstChild);
+    } else {
+      box.insertBefore(chip('Anything', !state[key], () => { state[key] = null; render(); }), box.firstChild);
+    }
+  };
+  mk('moodChips', MOODS, 'mood');
+  mk('ageChips', AGES, 'age');
+  mk('priceChips', PRICES, 'price');
+  mk('walkChips', WALKS, 'walk');
 }
 
-function matches(v){
-  if (state.skipParty && (v.vibe==='party' || v.music.includes('party country'))) return false;
-  if (state.who==='party' && !(v.vibe==='party' || (v.crowd||'').toLowerCase().includes('bachelorette'))) return false;
-  if (state.age && ageBand(v)!==state.age) return false;
-  if (state.look && !looksLike(v, state.look)) return false;
-  if (state.price && priceBand(v)!==state.price) return false;
-  if (state.vibe && v.vibe!==state.vibe) return false;
-  if (state.music && !v.music.some(m=> m===state.music || m.includes(state.music))) return false;
-  if (state.night){
-    const best = v.best || [];
-    const anyNight = best.includes('any') || best.includes('varies');
-    if (!anyNight && !best.includes(state.night)) return false;
-  }
+// ---------- time logic ----------
+const nowMin = () => { const d = new Date(); return d.getHours() * 60 + d.getMinutes(); };
+const toMin = t => { const [h, m] = t.split(':').map(Number); return h * 60 + m; };
+const clock = t => {
+  const [h, m] = t.split(':').map(Number);
+  const ap = h >= 12 ? 'pm' : 'am';
+  const hh = h % 12 === 0 ? 12 : h % 12;
+  return hh + (m ? ':' + String(m).padStart(2, '0') : '') + ap;
+};
+const playingNow = a => {
+  const n = nowMin(), s = toMin(a.start), e = toMin(a.end);
+  return e > s ? (n >= s && n < e) : (n >= s || n < e);
+};
+
+// ---------- matching ----------
+const actMood = (v, a) => (v.mood || []).concat(a.mood || []);
+function actMatchesMood(v, a, mood) {
+  if (!mood) return true;
+  const tags = actMood(v, a).join(' ').toLowerCase();
+  if (mood === 'two-step') return /two-step|dance/.test(tags);
+  if (mood === 'classic')  return /classic country|traditional|honky tonk/.test(tags);
+  if (mood === 'rowdy')    return /rowdy|singalong|party/.test(tags);
+  if (mood === 'talk')     return /talk|acoustic|quiet/.test(tags);
   return true;
 }
+const rows = () => {
+  const out = [];
+  VENUES.forEach(v => (v.acts || []).forEach(a => out.push({ v, a })));
+  return out;
+};
+const matches = r => {
+  const { v, a } = r;
+  if (!actMatchesMood(v, a, state.mood)) return false;
+  if (state.age && v.ageBand !== state.age) return false;
+  if (state.price && v.price !== state.price) return false;
+  if (state.walk && v.walk > state.walk) return false;
+  return true;
+};
 
-function card(v){
-  const el = document.createElement('div'); el.className='card';
-  const tags = v.music.slice(0,4).map(m=>`<span class="tag">${MUSIC_LABEL[m]||m}</span>`).join('')
-             + `<span class="tag hot">${VIBE_LABEL[v.vibe]||v.vibe}</span>`;
+// ---------- render ----------
+function actCard(r, opts = {}) {
+  const { v, a } = r;
+  const live = playingNow(a);
+  const el = document.createElement('div');
+  el.className = 'card' + (a.benny || opts.featured ? ' feat' : '');
+  const badges = [
+    a.benny ? '<span class="badge">Featured set</span>' : '',
+    live ? '<span class="badge live">Playing now</span>' : '',
+    /^SAMPLE/.test(a.act) ? '<span class="badge sample">Sample card</span>' : ''
+  ].join(' ');
   el.innerHTML = `
-    <div class="area">${v.area}</div>
-    <h2>${v.name}</h2>
-    <div class="tags">${tags}</div>
-    ${v.featured?'<div class="tag hot" style="margin-top:8px">Featured</div>':''}
-    <p>${v.why}</p>
-    ${(v.specials && v.specials.length)?`<div class="specials"><b>Specials:</b> ${v.specials.join(' · ')}</div>`:''}
-    ${v.note?`<p class="note">${v.note}</p>`:''}
+    ${badges}
+    <h2 class="act">${a.act}</h2>
+    <p class="room">${v.name} — ${a.stage} &nbsp;·&nbsp; ${v.address}</p>
+    <p class="sound">${a.sound || ''}</p>
+    ${a.remember ? `<p class="remember">${a.remember}</p>` : ''}
     <div class="facts">
-      <span><b>Cover:</b> ${v.cover}</span>
-      <span><b>Hours:</b> ${v.hours}</span>
-      <span><b>Crowd:</b> ${v.crowd}</span>
-      ${v.address&&v.address!=='Broadway'?`<span><b>Where:</b> ${v.address}</span>`:''}
+      <span><b>Set:</b> ${clock(a.start)}–${clock(a.end)}</span>
+      <span><b>Cover:</b> ${a.cover || v.cover}</span>
+      <span><b>Age:</b> ${a.age || v.age}</span>
+      <span><b>Walk:</b> ${v.walk} min from ${DATA.center || 'Broadway'}</span>
     </div>`;
   return el;
 }
 
 function render(){
   buildChips();
-  const list = document.getElementById('list'); list.innerHTML='';
-  const hits = VENUES.filter(matches);
-  document.getElementById('count').textContent =
-    hits.length + (hits.length===1?' place':' places') +
-    (state.night?` worth your ${state.night}`:'') +
-    (state.skipParty?' (party bars hidden)':'') +
-    (state.who==='party'?' — party rooms':'') +
-    (state.age?` · ${AGE_LABEL[state.age]}`:'') +
-    (state.price?` · ${state.price}`:'');
-  if(!hits.length){
-    const e=document.createElement('div'); e.className='empty';
-    e.innerHTML='Nothing on this list fits that combination — which usually means the honest answer is<br>“pick a different night.” Try removing a filter.';
-    list.appendChild(e); return;
+  const list = document.getElementById('list');
+  const countEl = document.getElementById('count');
+  list.innerHTML = '';
+
+  const all = rows();
+  const hits = all.filter(matches);
+  const live = hits.filter(r => playingNow(r.a));
+  const benny = all.filter(r => r.a.benny && r.a.confirmed);
+
+  // featured Benny set always goes first
+  const featured = benny[0];
+  const rest = hits.filter(r => r !== featured);
+
+  const cheapWalk = VENUES.filter(v => v.walk <= 3).length;
+  countEl.innerHTML = `<b>${live.length}</b> act${live.length === 1 ? '' : 's'} playing right now ·
+    ${hits.length} match${hits.length === 1 ? '' : 'es'} · ${cheapWalk} rooms under a 3-minute walk`;
+
+  if (featured) list.appendChild(actCard(featured, { featured: true }));
+
+  if (!hits.length){
+    // fallback: closest thing playing now, then next set that fits
+    const nearest = all.filter(r => playingNow(r.a)).sort((x, y) => x.v.walk - y.v.walk)[0];
+    const nextUp = all.filter(r => !playingNow(r.a) && matches({ ...r, a: r.a })).sort((x, y) => toMin(x.a.start) - toMin(y.a.start))[0];
+    const box = document.createElement('div');
+    box.className = 'empty';
+    box.innerHTML = `<h3>Nothing matches that exactly.</h3>
+      ${nearest ? `<p>Closest thing playing right now: <b>${nearest.a.act}</b> at ${nearest.v.name} (${nearest.a.stage}) —
+        ${nearest.v.walk} min walk${state.price && nearest.v.price !== state.price ? `, but drinks are ${nearest.v.price}` : ''}${state.age && nearest.v.ageBand !== state.age ? `, and the room skews ${nearest.v.ageBand}` : ''}.</p>` : ''}
+      ${nextUp ? `<div class="fallback"><b>Next set that fits:</b> ${nextUp.a.act} at ${nextUp.v.name} (${nextUp.a.stage}),
+        starts ${clock(nextUp.a.start)} — ${nextUp.v.walk} min walk.${state.price && nextUp.v.price !== state.price ? ` Cover/drinks: ${nextUp.v.price}.` : ''}</div>` : ''}
+      <p style="margin:10px 0 0;color:var(--muted)">Try loosening one filter — the honest answer is usually "change the room, not the night."</p>`;
+    list.appendChild(box);
+    return;
   }
-  hits.sort((a,b)=> (b.featured?1:0)-(a.featured?1:0) || ((a.vibe==='party')-(b.vibe==='party')));
-  hits.forEach(v=> list.appendChild(card(v)));
+
+  rest.sort((x, y) => (playingNow(y.a) - playingNow(x.a)) || (x.v.walk - y.v.walk));
+  rest.forEach(r => list.appendChild(actCard(r)));
 }
 
-document.getElementById('skipParty').addEventListener('change', e=>{ state.skipParty = e.target.checked; render(); });
-
-document.getElementById('tipForm').addEventListener('submit', e=>{
+document.getElementById('tipForm').addEventListener('submit', e => {
   e.preventDefault();
   const what = document.getElementById('tipWhat').value.trim();
   const where = document.getElementById('tipWhere').value.trim();
   const when = document.getElementById('tipWhen').value.trim();
   const who = document.getElementById('tipWho').value.trim();
-  if(!what && !where){ document.getElementById('tipWhat').focus(); return; }
-  const body = 'WHAT: ' + what + '\nWHERE: ' + where + '\nWHEN: ' + when + '\nFROM: ' + (who||'(anonymous)');
-  location.href = 'mailto:djbenthomas@gmail.com?subject=' + encodeURIComponent('Nashville Tonight — tip') + '&body=' + encodeURIComponent(body);
+  if (!what && !where) { document.getElementById('tipWhat').focus(); return; }
+  const body = 'WHAT: ' + what + '\nWHERE: ' + where + '\nWHEN: ' + when + '\nFROM: ' + (who || '(anonymous)');
+  location.href = 'mailto:djbenthomas@gmail.com?subject=' + encodeURIComponent('Honky Tonk Bar Hop — tip') + '&body=' + encodeURIComponent(body);
 });
 
-document.getElementById('report').addEventListener('click', ()=>{
-  location.href = 'mailto:djbenthomas@gmail.com?subject=' + encodeURIComponent('Nashville Tonight — correction')
-    + '&body=' + encodeURIComponent('Venue:\nWhat changed:\n');
+document.getElementById('report').addEventListener('click', () => {
+  location.href = 'mailto:djbenthomas@gmail.com?subject=' + encodeURIComponent('Honky Tonk Bar Hop — correction')
+    + '&body=' + encodeURIComponent('Room:\nWhat changed:\n');
 });
 
-fetch('data/venues.json').then(r=>r.json()).then(d=>{
-  VENUES = d.venues || [];
-  document.getElementById('meta').textContent = 'Last verified ' + d.updated + ' · ' + VENUES.length + ' rooms · schedules change — check the venue before you go';
-  const today = new Date().getDay(); // 0=Sun
-  state.night = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][today];
+fetch('data/barhop.json').then(r => r.json()).then(d => {
+  DATA = d; VENUES = d.venues || [];
   render();
-  // default to tonight, but make it obvious it's a filter
-  document.querySelectorAll('.fgroup')[0].querySelector('label').textContent = 'Night — set to tonight (' + state.night + ')';
-}).catch(e=>{
-  document.getElementById('meta').textContent='Could not load the list: '+e.message;
+  setInterval(render, 60000);
+}).catch(e => {
+  document.getElementById('count').textContent = 'Could not load the street: ' + e.message;
 });
 </script>
 </body>

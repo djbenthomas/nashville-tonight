@@ -49,6 +49,16 @@
   footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);font-size:12.5px;color:#7d7168;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
   footer a{color:var(--gold);text-decoration:none}
   .report{background:none;border:0;color:var(--gold);font-size:12px;padding:0;cursor:pointer;text-decoration:underline}
+  .tip{margin:34px 0 10px;padding:20px;border:1px solid var(--line);background:var(--card);border-radius:12px}
+  .tip h2{font-family:Georgia,serif;font-weight:400;font-size:19px;margin:0 0 6px}
+  .tip p{color:var(--muted);font-size:14px;margin:0 0 14px;max-width:640px}
+  .tip label{display:block;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:10px 0 5px}
+  .tip input,.tip textarea{width:100%;box-sizing:border-box;background:var(--ink);border:1px solid var(--line);color:var(--cream);
+    border-radius:8px;padding:9px 11px;font-size:14px;font-family:inherit}
+  .tip textarea{min-height:64px;resize:vertical}
+  .tip button{margin-top:14px;background:var(--gold);color:#1a1512;border:0;border-radius:999px;padding:10px 20px;
+    font-size:13px;font-weight:600;cursor:pointer}
+  .tip .fine{font-size:12px;color:var(--muted);margin-top:10px}
 </style>
 </head>
 <body>
@@ -96,6 +106,25 @@
 
 <div class="count" id="count"></div>
 <div class="list" id="list"></div>
+
+<section class="tip" id="tip">
+  <h2>Pop-up show? Somebody famous in town?</h2>
+  <p>If you hear about something tonight that isn't on this list — a pop-up set, a name you didn't expect,
+  a room that changed its lineup last minute — send it over. We check with the venue and post it the same day.
+  You don't need an account.</p>
+  <form id="tipForm" novalidate>
+    <label for="tipWhat">What's happening</label>
+    <textarea id="tipWhat" placeholder="Pop-up set at 10 — a couple of the guys from..."></textarea>
+    <label for="tipWhere">Where</label>
+    <input id="tipWhere" placeholder="Room or street address">
+    <label for="tipWhen">When</label>
+    <input id="tipWhen" placeholder="Tonight, 10pm — or Tue afternoon">
+    <label for="tipWho">Your name (optional)</label>
+    <input id="tipWho" placeholder="So we can credit you">
+    <button type="submit">Send the tip</button>
+    <div class="fine">Goes straight to a person, not a form robot. If it's a real pop-up we'll have it up within the hour.</div>
+  </form>
+</section>
 
 <footer>
   <div>Built and kept by <a href="https://as-ulikeit.com" target="_blank" rel="noopener">AS·U·LIKE·IT Entertainment</a> — Nashville.</div>
@@ -241,6 +270,18 @@ function render(){
 }
 
 document.getElementById('skipParty').addEventListener('change', e=>{ state.skipParty = e.target.checked; render(); });
+
+document.getElementById('tipForm').addEventListener('submit', e=>{
+  e.preventDefault();
+  const what = document.getElementById('tipWhat').value.trim();
+  const where = document.getElementById('tipWhere').value.trim();
+  const when = document.getElementById('tipWhen').value.trim();
+  const who = document.getElementById('tipWho').value.trim();
+  if(!what && !where){ document.getElementById('tipWhat').focus(); return; }
+  const body = 'WHAT: ' + what + '\nWHERE: ' + where + '\nWHEN: ' + when + '\nFROM: ' + (who||'(anonymous)');
+  location.href = 'mailto:djbenthomas@gmail.com?subject=' + encodeURIComponent('Nashville Tonight — tip') + '&body=' + encodeURIComponent(body);
+});
+
 document.getElementById('report').addEventListener('click', ()=>{
   location.href = 'mailto:djbenthomas@gmail.com?subject=' + encodeURIComponent('Nashville Tonight — correction')
     + '&body=' + encodeURIComponent('Venue:\nWhat changed:\n');

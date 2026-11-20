@@ -62,6 +62,9 @@ and the rooms that actually book real country don't get found.</p>
 <p>You get a short list of rooms, walking distance, described honestly — plus one tap that hides the
 bachelorette scene: <strong>"skip the party bars."</strong> The promise is the whole product:
 <em>for people who came for the music.</em></p>
+<p><strong>And it takes tips:</strong> pop-up show, a famous name sitting in with a house band, a lineup that
+changed at 6pm — anybody can send it in from the page, no account. It goes to a person, gets checked with the
+venue, and lands on the list the same day. No static guide can do that.</p>
 
 <h2><span class="n">03</span>How people find it</h2>
 <div class="cols">

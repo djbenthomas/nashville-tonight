@@ -69,9 +69,18 @@ bachelorette scene: <strong>"skip the party bars."</strong> The promise is the w
     <ul>
       <li><strong>Fridge magnets with a QR code</strong> — thousands. "More info →". Magnets get taken home, and that's the point: locals keep them and use them every weekend.</li>
       <li><strong>Cards and flyers</strong> for the two-day tourists — honky tonk doorways, boot shops, hotels.</li>
-      <li><strong>Window stickers</strong> on the doors of rooms that want to be found.</li>
+      <li><strong>Posters</strong> in the windows and behind the bar of the rooms that want to be found.</li>
+      <li><strong>Window stickers</strong> on the doors, so a walk down the street is the directory.</li>
       <li>Every batch has its own code, so we know which location and which hand produced the scans.</li>
     </ul>
+    <p style="margin-top:6pt"><strong>Who hands it out:</strong> the bands, not a guy with a stack of paper.
+    Every act playing the rooms we list gets magnets and cards for their own crowd — their show on the front,
+    so it travels to the next gig. Sponsoring bars keep all three stocked: flyers at the door, posters inside,
+    magnets on the bar. Boot and product stores take counter cards and window magnets, which is the
+    highest-intent traffic in the whole system.</p>
+    <p style="margin-top:4pt"><strong>What it does not become:</strong> an advertising wall. Sponsors get a line
+    and a logo, not the page — a party bar is listed as a party bar whether they pay or not. The listings stay
+    editorial, because that is the only reason anyone picks it up.</p>
   </div>
   <div>
     <div class="box"><strong>Why magnets:</strong> tourists leave in 48 hours, locals go out every weekend. A magnet is repeat traffic; a flyer in a trash can is not.</div>
@@ -79,10 +88,21 @@ bachelorette scene: <strong>"skip the party bars."</strong> The promise is the w
   </div>
 </div>
 
-<h2><span class="n">04</span>Who it's for</h2>
-<p>The 30+ crowd who came for the music, and the locals tired of paying a cover to hear a rock band call
-itself country. The Instagram account — <strong>Keeping Nashville Country</strong> — is the audience
-engine: same voice, same taste, one post a day about who's actually playing it.</p>
+<h2><span class="n">04</span>Who it's for — both directions</h2>
+<p>The same page serves the person who came for the music and the bachelorette party that came to go out.
+They just answer different questions.</p>
+<div class="cols">
+  <div><div class="box"><strong>Here for the music:</strong> 30+, tired of paying a cover to hear a rock band
+  call itself country. They pick the music, pick the room, and tick <em>skip the party bars</em>. No other
+  guide makes that promise.</div></div>
+  <div><div class="box"><strong>Here for the party:</strong> bachelorette parties, birthdays, the group that
+  wants a scene. Same filters flipped: what music, what age range they're comfortable in, what they're
+  looking for — dance floor, live band, cocktails, big group — and what they want to spend on drinks and cover.</div></div>
+</div>
+<p>Nobody picks a bar because a flyer told them to. They pick it because it matches what they already wanted
+to do. Four quick questions, answered honestly — including telling the bachelorette party which bar is
+actually fun for them, and telling the couple in from Kentucky which room to avoid. The Instagram account
+is the audience engine: same voice, same taste, one post a day about who's actually playing.</p>
 
 <h2><span class="n">05</span>How it makes money</h2>
 <ul>

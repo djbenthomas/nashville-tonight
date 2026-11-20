@@ -75,6 +75,22 @@
     <label>The kind of night</label>
     <div class="chips" id="vibeChips"></div>
   </div>
+  <div class="fgroup">
+    <label>Who's asking</label>
+    <div class="chips" id="whoChips"></div>
+  </div>
+  <div class="fgroup">
+    <label>Age range</label>
+    <div class="chips" id="ageChips"></div>
+  </div>
+  <div class="fgroup">
+    <label>What you're looking for</label>
+    <div class="chips" id="lookChips"></div>
+  </div>
+  <div class="fgroup">
+    <label>Drink prices &amp; cover <span style="font-weight:400;opacity:.65">(estimated from the cover)</span></label>
+    <div class="chips" id="priceChips"></div>
+  </div>
   <label class="toggle"><input type="checkbox" id="skipParty"> Skip the party bars — I want to hear the band</label>
 </div>
 
@@ -99,7 +115,34 @@ const MUSIC_LABEL = {
 const VIBES = ['listening','honky tonk','dance hall','dive','bar','party'];
 const VIBE_LABEL = {listening:'Sit and listen', 'honky tonk':'Honky tonk', 'dance hall':'Dance hall', dive:'Dive', bar:'Neighborhood bar', party:'Party bar'};
 
-const state = { night:null, music:null, vibe:null, skipParty:false };
+const state = { night:null, music:null, vibe:null, who:null, age:null, look:null, price:null, skipParty:false };
+
+// Derived, not invented: age band and price band come from the room's own written description.
+const AGE_LABEL = {'21-34':'21–34', '35+':'35 and up', any:'Any age'};
+const LOOK_LABEL = {dance:'Dance floor', band:'Live band, front and center', scene:'Cocktails and a scene', group:'Big group / bachelorette', quiet:'Somewhere I can talk'};
+const PRICE_LABEL = {'$':'$ — no cover, cheap drinks', '$$':'$$ — small cover', '$$$':'$$$ — cover or ticketed'};
+
+function ageBand(v){
+  const c = (v.crowd||'').toLowerCase();
+  if (c.includes('older')) return '35+';
+  if (c.includes('bachelorette') || c.includes('tourist') || c.includes('party')) return '21-34';
+  return 'any';
+}
+function priceBand(v){
+  const c = (v.cover||'').toLowerCase();
+  if (c.includes('no cover')) return '$';
+  if (c.includes('ticket') || c.includes('reservation') || c==='cover' || c.includes('most nights')) return '$$$';
+  return '$$';
+}
+function looksLike(v, want){
+  const c = (v.crowd||'').toLowerCase(), m = (v.music||[]).join(' ').toLowerCase();
+  if (want==='dance') return v.vibe==='dance hall' || v.vibe==='party';
+  if (want==='band')  return v.vibe==='listening' || v.vibe==='honky tonk';
+  if (want==='scene') return v.vibe==='party' && (c.includes('tourist') || c.includes('party'));
+  if (want==='group') return v.vibe==='party' || c.includes('bachelorette') || c.includes('tourist');
+  if (want==='quiet') return v.vibe==='listening' || v.vibe==='dive';
+  return true;
+}
 let VENUES = [];
 
 function chip(text, pressed, onClick){
@@ -122,10 +165,30 @@ function buildChips(){
   const v = document.getElementById('vibeChips'); v.innerHTML='';
   v.appendChild(chip('Any vibe', !state.vibe, ()=>{ state.vibe=null; render(); }));
   VIBES.forEach(k=> v.appendChild(chip(VIBE_LABEL[k], state.vibe===k, ()=>{ state.vibe = state.vibe===k?null:k; render(); })));
+
+  const w = document.getElementById('whoChips'); w.innerHTML='';
+  w.appendChild(chip('Here for the music', !state.who, ()=>{ state.who = state.who==='music'?null:'music'; state.skipParty = state.who==='music'; document.getElementById('skipParty').checked = state.skipParty; render(); }));
+  w.appendChild(chip('Bachelorette / party night', state.who==='party', ()=>{ state.who = state.who==='party'?null:'party'; state.skipParty = false; document.getElementById('skipParty').checked = false; render(); }));
+
+  const a = document.getElementById('ageChips'); a.innerHTML='';
+  a.appendChild(chip('Any age', !state.age, ()=>{ state.age=null; render(); }));
+  ['21-34','35+','any'].forEach(k=> a.appendChild(chip(AGE_LABEL[k], state.age===k, ()=>{ state.age = state.age===k?null:k; render(); })));
+
+  const l = document.getElementById('lookChips'); l.innerHTML='';
+  l.appendChild(chip('Anything', !state.look, ()=>{ state.look=null; render(); }));
+  ['dance','band','scene','group','quiet'].forEach(k=> l.appendChild(chip(LOOK_LABEL[k], state.look===k, ()=>{ state.look = state.look===k?null:k; render(); })));
+
+  const p = document.getElementById('priceChips'); p.innerHTML='';
+  p.appendChild(chip('Any price', !state.price, ()=>{ state.price=null; render(); }));
+  ['$','$$','$$$'].forEach(k=> p.appendChild(chip(PRICE_LABEL[k], state.price===k, ()=>{ state.price = state.price===k?null:k; render(); })));
 }
 
 function matches(v){
   if (state.skipParty && (v.vibe==='party' || v.music.includes('party country'))) return false;
+  if (state.who==='party' && !(v.vibe==='party' || (v.crowd||'').toLowerCase().includes('bachelorette'))) return false;
+  if (state.age && ageBand(v)!==state.age) return false;
+  if (state.look && !looksLike(v, state.look)) return false;
+  if (state.price && priceBand(v)!==state.price) return false;
   if (state.vibe && v.vibe!==state.vibe) return false;
   if (state.music && !v.music.some(m=> m===state.music || m.includes(state.music))) return false;
   if (state.night){
@@ -164,7 +227,10 @@ function render(){
   document.getElementById('count').textContent =
     hits.length + (hits.length===1?' place':' places') +
     (state.night?` worth your ${state.night}`:'') +
-    (state.skipParty?' (party bars hidden)':'');
+    (state.skipParty?' (party bars hidden)':'') +
+    (state.who==='party'?' — party rooms':'') +
+    (state.age?` · ${AGE_LABEL[state.age]}`:'') +
+    (state.price?` · ${state.price}`:'');
   if(!hits.length){
     const e=document.createElement('div'); e.className='empty';
     e.innerHTML='Nothing on this list fits that combination — which usually means the honest answer is<br>“pick a different night.” Try removing a filter.';

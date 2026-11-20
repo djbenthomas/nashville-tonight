@@ -73,7 +73,8 @@ li {{ margin-bottom:2.6pt; }}
     <div class="brand">Nashville Tonight</div>
     <h1>The people are already downtown.<br><em>We tell them where to go.</em></h1>
     <p class="sub">A hand-curated directory of Nashville's live music rooms — by music, by night, by the
-    kind of night someone actually wants. Distributed on flyers with a QR code, refreshed weekly.</p>
+    kind of night someone actually wants. Distributed on magnets, flyers and posters with a QR code,
+    refreshed weekly — and handed out by the bands themselves.</p>
   </div>
   <div class="right">
     <img src="file://{QR}" alt="QR">
@@ -89,6 +90,9 @@ li {{ margin-bottom:2.6pt; }}
       <li>Picks the night, the music, the vibe</li>
       <li>Gets a short list of rooms, described honestly</li>
       <li>Google gives a list of bars. We give an answer.</li>
+      <li>It reaches them three ways: magnets (take-home, repeat use), flyers and posters (bars, doorways,
+      windows), and counter cards in boot and product stores</li>
+      <li>The bands distribute it themselves — every act we list gets magnets and cards for their crowd</li>
     </ul>
   </div>
   <div>
